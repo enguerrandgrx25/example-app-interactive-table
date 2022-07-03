@@ -1,111 +1,72 @@
-import pandas as pd
+# import module
 import streamlit as st
-from st_aggrid import AgGrid, GridOptionsBuilder
-from st_aggrid.shared import GridUpdateMode
+import pandas as pd
+import numpy as np
 
-STREAMLIT_AGGRID_URL = "https://github.com/PablocFonseca/streamlit-aggrid"
+
+import notion_df
+
 st.set_page_config(
-    layout="centered", page_icon="🖱️", page_title="Interactive table app"
-)
-st.title("🖱️ Interactive table app")
-st.write(
-    """This app shows how you can use the [streamlit-aggrid](STREAMLIT_AGGRID_URL) 
-    Streamlit component in an interactive way so as to display additional content 
-    based on user click."""
+    page_title="Cyber Motion by CYNA-IT",
+    page_icon="👋",
 )
 
-
-st.write("Go ahead, click on a row in the table below!")
-
-
-def aggrid_interactive_table(df: pd.DataFrame):
-    """Creates an st-aggrid interactive table based on a dataframe.
-
-    Args:
-        df (pd.DataFrame]): Source dataframe
-
-    Returns:
-        dict: The selected row
-    """
-    options = GridOptionsBuilder.from_dataframe(
-        df, enableRowGroup=True, enableValue=True, enablePivot=True
-    )
-
-    options.configure_side_bar()
-
-    options.configure_selection("single")
-    selection = AgGrid(
-        df,
-        enable_enterprise_modules=True,
-        gridOptions=options.build(),
-        theme="light",
-        update_mode=GridUpdateMode.MODEL_CHANGED,
-        allow_unsafe_jscode=True,
-    )
-
-    return selection
+# Title
+st.write("""
+# Cyber Motion by CYNA-IT
+Hello *cyber analyst*""")
 
 
-iris = pd.read_csv(
-    "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
-)
 
-selection = aggrid_interactive_table(df=iris)
-
-if selection:
-    st.write("You selected:")
-    st.json(selection["selected_rows"])
-
-st.write("## Code")
-
-st.code(
-    '''
-import pandas as pd
-import streamlit as st
-from st_aggrid import AgGrid, GridOptionsBuilder
-from st_aggrid.shared import GridUpdateMode
-
-iris = pd.read_csv(
-    "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
-)
-
-def aggrid_interactive_table(df: pd.DataFrame):
-    """Creates an st-aggrid interactive table based on a dataframe.
-
-    Args:
-        df (pd.DataFrame]): Source dataframe
-
-    Returns:
-        dict: The selected row
-    """
-    options = GridOptionsBuilder.from_dataframe(
-        df, enableRowGroup=True, enableValue=True, enablePivot=True
-    )
-
-    options.configure_side_bar()
-
-    options.configure_selection("single")
-    selection = AgGrid(
-        df,
-        enable_enterprise_modules=True,
-        gridOptions=options.build(),
-        theme="light",
-        update_mode=GridUpdateMode.MODEL_CHANGED,
-        allow_unsafe_jscode=True,
-    )
-
-    return selection
+## Get data from Notion
+page_url = "https://www.notion.so/c7ade621ac57491ab4e17a9d8ce01d5d?v=5e82aacac0f94d6ba5ae736aaa17a03f"
+api_key = "secret_y1reuQYpSgvNA13TKfzKm7Azk9mU4u78dexTXqaPdFi"
 
 
-iris = pd.read_csv(
-    "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
-)
+df = notion_df.download(page_url, api_key=api_key)
+# Equivalent to: df = pd.read_notion(notion_database_url, api_key=api_key)
 
-selection = aggrid_interactive_table(df=iris)
+df = df[['Name', 'Date', 'Risk Score']]
+df['Date'] = df['Date'].apply(lambda x: str(x).split()[0])
+#st.dataframe(df)
 
-if selection:
-    st.write("You selected:")
-    st.json(selection["selected_rows"])
-''',
-    "python",
-)
+def color_risk(val):
+    #val = int(val)
+    color = "gold"
+    if(val == "Critique"):
+        color = 'red'
+    elif(val == "Majeur"):
+        color = 'orange'
+    elif(val == "Modere"):
+        color = "gold"
+    else:
+     color = 'blue'
+    return f'background-color: {color}'
+
+
+if("Critique" in df["Risk Score"].to_list()):
+    st.error("Alert vous avez une intrusion critique")
+
+
+# Inject CSS with Markdown
+
+df = df.sort_values(['Risk Score'], ascending=False).reset_index(drop=True).style.applymap(color_risk, subset=['Risk Score'])
+
+
+
+# CSS to inject contained in a string
+hide_dataframe_row_index = """
+            <style>
+            .row_heading.level0 {display:none}
+            .blank {display:none}
+            </style>
+            """
+
+# Inject CSS with Markdown
+st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+
+
+
+st.dataframe(df)
+
+#df = pd.DataFrame(data)
