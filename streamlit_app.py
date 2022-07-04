@@ -47,6 +47,7 @@ def color_risk(val):
 if("Critique" in df["Risk Score"].to_list()):
     st.error("Alert vous avez une intrusion critique")
 
+st.markdown('##')
 
 # Inject CSS with Markdown
 
@@ -68,5 +69,16 @@ st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 
 
 st.dataframe(df)
+
+st.markdown('##')
+
+col1, col2, col3 = st.columns(3)
+
+col1.metric("Number of tracked assets", 10, 10 - 25)
+col2.metric(
+    "Squirrels per hectare",
+    round(10 / 350, 2),
+    round((10 - 2373) / 350, 2))
+col3.metric("Number of primary colors", 3)
 
 #df = pd.DataFrame(data)
