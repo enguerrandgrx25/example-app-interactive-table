@@ -2,7 +2,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 import notion_df
 
@@ -53,10 +54,20 @@ st.markdown('##')
 st.markdown('##')
 
 if("Critique" in df["Risk Score"].to_list()):
-    st.error("Alert vous avez une intrusion critique")
+    st.error("Alert vous avez une intrusion Critique")
+
+elif("Majeur" in df["Risk Score"].to_list()):
+    st.warning("Alert vous avez une intrusion Majeur")
+
+elif("Modere" in df["Risk Score"].to_list()):
+    st.info("Alert vous avez une intrusion Modere")
+
+else("Mineur" in df["Risk Score"].to_list()):
+    st.succes("Vous n'avez pas d'alerte grave")
 
 st.markdown('##')
 st.markdown('##')
+
 
 
 
@@ -93,5 +104,13 @@ col2.metric(
     round(10 / 350, 2),
     round((10 - 2373) / 350, 2))
 col3.metric("Number of primary colors", 3)
+
+st.markdown('##')
+st.markdown('##')
+
+fig = plt.figure(figsize=(10, 4))
+sns.countplot(x="Risk Score", data=df, palette="Set2")
+st.pyplot(fig)
+
 
 #df = pd.DataFrame(data)
