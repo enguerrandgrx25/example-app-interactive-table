@@ -109,7 +109,7 @@ st.markdown('##')
 st.markdown('##')
 
 fig = plt.figure(figsize=(10, 4))
-sns.countplot(x="Risk Score", data=df, palette="Set2")
+sns.countplot(x="Risk Score", data=df)
 st.pyplot(fig)
 
 
