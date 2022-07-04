@@ -98,12 +98,12 @@ st.markdown('##')
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric("Number of tracked assets", 10, 10 - 5)
+col1.metric("Number of detected intrussion", len(df), len(df) - 5)
 col2.metric(
-    "Squirrels per hectare",
-    round(10 / 350, 2),
-    round((10 - 2373) / 350, 2))
-col3.metric("Number of primary colors", 3)
+    "Tracked assets",
+    round(20),
+    round(10-5))
+col3.metric("Number of ...", 3)
 
 st.markdown('##')
 st.markdown('##')
