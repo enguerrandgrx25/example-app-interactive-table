@@ -6,16 +6,25 @@ import numpy as np
 
 import notion_df
 
+from PIL import Image
+
+
 st.set_page_config(
     page_title="Cyber Motion by CYNA-IT",
     page_icon="👋",
 )
+
+image = Image.open('cyna.jpg')
+
+st.image(image)
 
 # Title
 st.write("""
 # Cyber Motion by CYNA-IT
 Hello *cyber analyst*""")
 
+st.markdown("# Main page 🎈")
+st.sidebar.markdown("# Main page 🎈")
 
 
 ## Get data from Notion
@@ -48,6 +57,7 @@ if("Critique" in df["Risk Score"].to_list()):
     st.error("Alert vous avez une intrusion critique")
 
 st.markdown('##')
+st.markdown('##')
 
 # Inject CSS with Markdown
 
@@ -71,10 +81,11 @@ st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 st.dataframe(df)
 
 st.markdown('##')
+st.markdown('##')
 
 col1, col2, col3 = st.columns(3)
 
-col1.metric("Number of tracked assets", 10, 10 - 25)
+col1.metric("Number of tracked assets", 10, 10 - 5)
 col2.metric(
     "Squirrels per hectare",
     round(10 / 350, 2),
