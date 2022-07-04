@@ -19,8 +19,6 @@ st.write("""
 # Historique
 Hello *cyber analyst*""")
 
-st.markdown("# Page 2 ❄️")
-st.sidebar.markdown("# Page 2 ❄️")
 
 
 ## Get data from Notion

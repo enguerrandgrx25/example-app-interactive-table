@@ -23,9 +23,6 @@ st.write("""
 # Cyber Motion by CYNA-IT
 Hello *cyber analyst*""")
 
-st.markdown("# Main page 🎈")
-st.sidebar.markdown("# Main page 🎈")
-
 
 ## Get data from Notion
 page_url = "https://www.notion.so/c7ade621ac57491ab4e17a9d8ce01d5d?v=5e82aacac0f94d6ba5ae736aaa17a03f"
@@ -58,6 +55,8 @@ if("Critique" in df["Risk Score"].to_list()):
 
 st.markdown('##')
 st.markdown('##')
+st.markdown('##')
+
 
 # Inject CSS with Markdown
 
@@ -80,6 +79,7 @@ st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 
 st.dataframe(df)
 
+st.markdown('##')
 st.markdown('##')
 st.markdown('##')
 
