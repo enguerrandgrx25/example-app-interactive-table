@@ -62,7 +62,7 @@ elif("Majeur" in df["Risk Score"].to_list()):
 elif("Modere" in df["Risk Score"].to_list()):
     st.info("Alert vous avez une intrusion Modere")
 
-else("Mineur" in df["Risk Score"].to_list()):
+else:
     st.succes("Vous n'avez pas d'alerte grave")
 
 st.markdown('##')
