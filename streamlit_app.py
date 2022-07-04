@@ -49,13 +49,15 @@ def color_risk(val):
      color = 'blue'
     return f'background-color: {color}'
 
+st.markdown('##')
+st.markdown('##')
 
 if("Critique" in df["Risk Score"].to_list()):
     st.error("Alert vous avez une intrusion critique")
 
 st.markdown('##')
 st.markdown('##')
-st.markdown('##')
+
 
 
 # Inject CSS with Markdown
@@ -81,7 +83,7 @@ st.dataframe(df)
 
 st.markdown('##')
 st.markdown('##')
-st.markdown('##')
+
 
 col1, col2, col3 = st.columns(3)
 
