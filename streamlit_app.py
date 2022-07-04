@@ -73,7 +73,7 @@ st.markdown('##')
 
 # Inject CSS with Markdown
 
-df = df.sort_values(['Risk Score'], ascending=False).reset_index(drop=True).style.applymap(color_risk, subset=['Risk Score'])
+df_sort = df.sort_values(['Risk Score'], ascending=False).reset_index(drop=True).style.applymap(color_risk, subset=['Risk Score'])
 
 
 
@@ -90,7 +90,7 @@ st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 
 
 
-st.dataframe(df)
+st.dataframe(df_sort)
 
 st.markdown('##')
 st.markdown('##')
