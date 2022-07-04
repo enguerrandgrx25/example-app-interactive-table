@@ -20,10 +20,8 @@ image = Image.open('cyna.jpg')
 st.image(image)
 
 # Title
-st.write("""
-# Cyber Motion by CYNA-IT
-Hello *cyber analyst*""")
-
+st.title("Cyber Motion by CYNA-IT")
+st.header("Intrusion detection dashboard")
 
 ## Get data from Notion
 page_url = "https://www.notion.so/c7ade621ac57491ab4e17a9d8ce01d5d?v=5e82aacac0f94d6ba5ae736aaa17a03f"
@@ -103,7 +101,7 @@ else:
 st.markdown('##')
 st.markdown('##')
 
-
+st.header("Statistic on IS")
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Number of detected intrussion", len(df_all), len(df_all) - 5)
@@ -116,6 +114,7 @@ col3.metric("Number of ...", 3)
 st.markdown('##')
 st.markdown('##')
 
+st.header("Statistic over the week")
 fig = plt.figure(figsize=(10, 4))
 sns.countplot(x="Risk Score", data=df_all)
 st.pyplot(fig)
