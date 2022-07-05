@@ -35,7 +35,9 @@ doss = st.checkbox("Voulez vous bloquer automatiquement les attaques de type Dos
 if doss:
      st.info('Nous allons bloquer tout les Doss !')
 
-
+doss = st.checkbox("Voulez etre alerte pour les fuite de données ")
+if doss:
+     st.info('Nous allons vous alerter  pour les fuite de données !')
 
 
 
