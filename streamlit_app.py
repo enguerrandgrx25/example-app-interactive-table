@@ -22,7 +22,7 @@ st.image(image)
 # Title
 st.title("Cyber Motion by CYNA-IT")
 
-st.header("Settings")
+st.header("Page 1 - Settings")
 st.markdown('##')
 st.markdown('##')
 
@@ -49,7 +49,7 @@ if data:
 #st.checkbox(label, value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
 
 
-st.header("Intrusion detection dashboard")
+st.header("Page 2 - Intrusion detection dashboard")
 
 ## Get data from Notion
 page_url = "https://www.notion.so/c7ade621ac57491ab4e17a9d8ce01d5d?v=5e82aacac0f94d6ba5ae736aaa17a03f"
@@ -129,7 +129,7 @@ else:
 st.markdown('##')
 st.markdown('##')
 
-st.header("Statistic on IS")
+st.header("Page 3 - Statistic on IS")
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Number of detected intrussion", len(df_all), len(df_all) - 5)
