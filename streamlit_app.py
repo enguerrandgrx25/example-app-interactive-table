@@ -59,7 +59,7 @@ api_key = "secret_y1reuQYpSgvNA13TKfzKm7Azk9mU4u78dexTXqaPdFi"
 df_all = notion_df.download(page_url, api_key=api_key)
 # Equivalent to: df = pd.read_notion(notion_database_url, api_key=api_key)
 
-df_all = df_all[['Name', 'Date', 'Risk Score', "Status"]]
+df_all = df_all[['Name', 'Date', 'Risk Score', "Status", "Asset Name"]]
 df_all['Date'] = df_all['Date'].apply(lambda x: str(x).split()[0])
 
 
@@ -145,6 +145,10 @@ st.markdown('##')
 st.header("Statistic over the week")
 fig = plt.figure(figsize=(10, 4))
 sns.countplot(x="Risk Score", data=df_all)
+st.pyplot(fig)
+
+fig = plt.figure(figsize=(10, 4))
+sns.countplot(x="Asset Name", data=df_all)
 st.pyplot(fig)
 
 
