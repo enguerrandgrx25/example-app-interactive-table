@@ -129,7 +129,20 @@ else:
 st.markdown('##')
 st.markdown('##')
 
-st.header("Page 3 - Statistic on IS")
+
+
+st.header("Page 3 - Statistic over the week")
+st.subheader("Type of alerte")
+fig = plt.figure(figsize=(10, 4))
+sns.countplot(x="Risk Score", data=df_all)
+st.pyplot(fig)
+
+st.subheader("Asset touché")
+fig = plt.figure(figsize=(10, 4))
+sns.countplot(x="Asset Name", data=df_all)
+st.pyplot(fig)
+
+st.header("Page 4 - Statistic on IS")
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Number of detected intrussion", len(df_all), len(df_all) - 5)
@@ -141,17 +154,5 @@ col3.metric("Number of ...", 3)
 
 st.markdown('##')
 st.markdown('##')
-
-st.header("Statistic over the week")
-st.subheader("Type of alerte")
-fig = plt.figure(figsize=(10, 4))
-sns.countplot(x="Risk Score", data=df_all)
-st.pyplot(fig)
-
-st.subheader("Asset touché")
-fig = plt.figure(figsize=(10, 4))
-sns.countplot(x="Asset Name", data=df_all)
-st.pyplot(fig)
-
 
 #df = pd.DataFrame(data)
