@@ -143,10 +143,12 @@ st.markdown('##')
 st.markdown('##')
 
 st.header("Statistic over the week")
+st.subheader("Type of alerte")
 fig = plt.figure(figsize=(10, 4))
 sns.countplot(x="Risk Score", data=df_all)
 st.pyplot(fig)
 
+st.subheader("Asset touché")
 fig = plt.figure(figsize=(10, 4))
 sns.countplot(x="Asset Name", data=df_all)
 st.pyplot(fig)
