@@ -21,7 +21,7 @@ st.image(image)
 
 # Title
 st.title("Cyber Motion by CYNA-IT")
-st.subheader("Nous analysons en permanance le traffic et l'activité de votre SI pour detecter toute tentative d'intrusion")
+st.caption("Nous analysons en permanance le traffic et l'activité de votre SI pour detecter toute tentative d'intrusion")
 
 
 
