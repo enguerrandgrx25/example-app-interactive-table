@@ -35,13 +35,14 @@ doss = st.checkbox("Voulez vous bloquer automatiquement les attaques de type Dos
 if doss:
      st.info('Nous allons bloquer tout les Doss !')
 
+secu_grp = st.checkbox("Avez vous des postes plus sensibles que d'autres ?  ")
+if secu_grp:
+     st.info('Nous vous informerons en cas de fuite de données sur les postes sensibles !')
+
 data = st.checkbox("Voulez etre alerte pour les fuite de données ")
 if data:
      st.info('Nous allons vous alerter  pour les fuite de données !')
 
-secu_grp = st.checkbox("Avez vous des postes plus sensibles que d'autres ?  ")
-if secu_grp:
-     st.info('Nous vous informerons en cas de fuite de données sur les postes sensibles !')
 
 
 #st.checkbox(label, value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
