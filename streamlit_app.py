@@ -21,6 +21,28 @@ st.image(image)
 
 # Title
 st.title("Cyber Motion by CYNA-IT")
+
+st.header("Settings")
+st.markdown('##')
+st.markdown('##')
+
+
+ransomware = st.checkbox("Voulez vous bloquer automatiquement les intrusions de type Ransomware")
+if ransomware:
+     st.info('Nous allons bloquer tout les Ransomware !')
+
+doss = st.checkbox("Voulez vous bloquer automatiquement les attaques de type DosS")
+if doss:
+     st.info('Nous allons bloquer tout les Doss !')
+
+
+
+
+
+#st.checkbox(label, value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
+#st.checkbox(label, value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False)
+
+
 st.header("Intrusion detection dashboard")
 
 ## Get data from Notion
